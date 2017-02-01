@@ -11,7 +11,7 @@
           <div class="sub-container">
             <div class="player2">2</div>
             <div class="center-spacer"></div>
-            <div class="player4">Player 4<img id="card" src="../assets/AS.svg"></img></div>
+            <div class="player4">Player 4<img id="card" src="https://s3-us-west-2.amazonaws.com/strebor-spades-images/AS.svg"></img></div>
           </div>
           <div class="player1">1</div>
         </div>
