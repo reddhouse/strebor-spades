@@ -25,13 +25,23 @@
     <button>Tally</button>
     <button>Reset</button>
     <button v-on:click="goHome">Home</button>
+
     <hr>
     <counter></counter>
+    <hr>
+
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in fullDeck">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+
   </div>
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <script>
-// import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import SingleCard from './SingleCard.vue'
 import Counter from './Counter.vue'
 
 export default {
@@ -45,10 +55,10 @@ export default {
     }
   },
   computed: {
-    // ...mapGetters(['titleState'])
+    ...mapGetters(['fullDeck'])
   },
   methods: {
-    // ...mapActions(['setTitle'])
+    ...mapActions(['setTitle']),
     goHome () {
       // Demo of programitic navigation
       this.$router.push('/')
@@ -58,7 +68,8 @@ export default {
 
   },
   components: {
-    Counter
+    Counter,
+    SingleCard
   }
 }
 </script>
@@ -71,6 +82,10 @@ export default {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.card-pics {
+  display: inline-block;
 }
 
 .layout-container {

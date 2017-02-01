@@ -1,0 +1,30 @@
+{
+  "fulldeck": [
+    {
+      "value": "King",
+      "suit": "Hearts",
+      "image": "https://deckofcardsapi.com/static/img/KH.png",
+      "code": "KH"
+    },
+    {
+      "value": "8",
+      "suit": "Clubs",
+      "image": "https://deckofcardsapi.com/static/img/8C.png",
+      "code": "8C"
+    }
+  ],
+  "player1hand": [
+    {
+      "value": "Queen",
+      "suit": "Spades",
+      "image": "https://deckofcardsapi.com/static/img/QS.png",
+      "code": "KH"
+    },
+    {
+      "value": "4",
+      "suit": "Diamonds",
+      "image": "https://deckofcardsapi.com/static/img/4D.png",
+      "code": "8C"
+    }
+  ]
+}

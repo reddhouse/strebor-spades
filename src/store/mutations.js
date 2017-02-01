@@ -16,11 +16,6 @@ export const decrement = state => {
 }
 
 // ArtistSearch Component Mutations --------------------------------------------
-export const requestSearchResults = (state) => {
-  state.isBusy = true
-}
-
-export const receiveSearchResults = (state, { artists }) => {
-  state.artists = artists
-  state.isBusy = false
+export const receiveFullDeck = (state, serverDeck) => {
+  state.fullDeck = serverDeck
 }

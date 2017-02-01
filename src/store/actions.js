@@ -20,14 +20,10 @@ export const incrementAsync = ({ commit }) => {
   }, 1000)
 }
 
-// ArtistSearch Component Actions ----------------------------------------------
-export const searchByArtistName = ({ commit }, { name }) => {
-  commit('requestSearchResults')
-  return axios.get('https://api.spotify.com/v1/search?q=' + name + '&type=artist&limit=10')
+// Table Component Actions ----------------------------------------------
+export const populateFullDeck = ({ commit }) => {
+  return axios.get('http://localhost:3000/fulldeck')
     .then(res => {
-      commit('receiveSearchResults', {artists: res.data.artists.items})
+      commit('receiveFullDeck', res.data)
     })
-}
-export const setTitle = ({ commit }, { title }) => {
-  commit('setTitle', { title })
 }

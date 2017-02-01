@@ -15,6 +15,5 @@ export const recentHistory = state => {
     .replace(/,/g, ', ')
 }
 
-// ArtistSearch Component Getters -----------------------------------------------
-export const artists = state => state.artists
-export const isBusy = state => state.isBusy
+// Table Component Getters -----------------------------------------------
+export const fullDeck = state => state.fullDeck

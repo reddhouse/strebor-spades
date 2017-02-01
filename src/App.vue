@@ -6,13 +6,35 @@
 
   </div>
 </template>
-
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+
+    }
+  },
+  computed: {
+    ...mapGetters(['titleState'])
+  },
+  methods: {
+    ...mapActions(['populateFullDeck'])
+  },
+  filters: {
+
+  },
+  components: {
+
+  },
+  mounted () {
+    this.populateFullDeck()
+  }
 }
 </script>
-
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <style>
 
 #app {
