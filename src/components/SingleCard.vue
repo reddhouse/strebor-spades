@@ -13,6 +13,7 @@ export default {
   props: ['card'],
   data () {
     return {
+
     }
   },
   computed: {

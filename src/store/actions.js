@@ -4,6 +4,9 @@
 
 import axios from 'axios'
 
+// const apiURL = 'http://localhost:3000'
+const apiURL = '/api'
+
 // Counter Component Actions ---------------------------------------------------
 export const increment = ({ commit }) => commit('increment')
 
@@ -22,7 +25,7 @@ export const incrementAsync = ({ commit }) => {
 
 // Table Component Actions ----------------------------------------------
 export const populateFullDeck = ({ commit }) => {
-  return axios.get('api/fulldeck')
+  return axios.get(apiURL + '/fulldeck')
     .then(res => {
       commit('receiveFullDeck', res.data)
     })

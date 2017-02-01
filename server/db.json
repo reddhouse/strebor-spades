@@ -3,28 +3,34 @@
     {
       "value": "King",
       "suit": "Hearts",
-      "image": "https://deckofcardsapi.com/static/img/KH.png",
+      "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KH.svg",
       "code": "KH"
     },
     {
       "value": "8",
       "suit": "Clubs",
-      "image": "https://deckofcardsapi.com/static/img/8C.png",
+      "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8C.svg",
       "code": "8C"
+    },
+    {
+      "value": "6",
+      "suit": "Diamonds",
+      "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4S.svg",
+      "code": "4S"
     }
   ],
   "player1hand": [
     {
       "value": "Queen",
       "suit": "Spades",
-      "image": "https://deckofcardsapi.com/static/img/QS.png",
-      "code": "KH"
+      "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QS.svg",
+      "code": "QS"
     },
     {
       "value": "4",
       "suit": "Diamonds",
-      "image": "https://deckofcardsapi.com/static/img/4D.png",
-      "code": "8C"
+      "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4D.svg",
+      "code": "4D"
     }
   ]
 }
