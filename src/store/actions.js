@@ -22,7 +22,7 @@ export const incrementAsync = ({ commit }) => {
 
 // Table Component Actions ----------------------------------------------
 export const populateFullDeck = ({ commit }) => {
-  return axios.get('http://localhost:3000/fulldeck')
+  return axios.get('api/fulldeck')
     .then(res => {
       commit('receiveFullDeck', res.data)
     })
