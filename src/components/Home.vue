@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <img id="logo" src="../assets/BJ.svg"></img>
-    <img id="logo" src="../assets/SJ.svg"></img>
-    <img id="logo" src="../assets/2S.svg"></img>
-    <img id="logo" src="../assets/AS.svg"></img>
-    <img id="logo" src="../assets/KS.svg"></img>
+    <img id="logo" src="https://s3-us-west-2.amazonaws.com/strebor-spades-images/BJ.svg"></img>
+    <img id="logo" src="https://s3-us-west-2.amazonaws.com/strebor-spades-images/SJ.svg"></img>
+    <img id="logo" src="https://s3-us-west-2.amazonaws.com/strebor-spades-images/2S.svg"></img>
+    <img id="logo" src="https://s3-us-west-2.amazonaws.com/strebor-spades-images/AS.svg"></img>
+    <img id="logo" src="https://s3-us-west-2.amazonaws.com/strebor-spades-images/KS.svg"></img>
     <div class="divider"></div>
     <div><router-link to="/table">Card Table</router-link></div>
     <div><router-link to="/foo">Go to Foo</router-link></div>
