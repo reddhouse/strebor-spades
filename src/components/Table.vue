@@ -30,14 +30,46 @@
     <counter></counter>
     <hr>
 
+    <p>player1Hand</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in player1Hand">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+    <hr>
+
+    <p>player2Hand</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in player2Hand">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+    <hr>
+
+    <p>player3Hand</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in player3Hand">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+    <hr>
+
+    <p>player4Hand</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in player4Hand">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+    <hr>
+
     <p>shuffled</p>
     <div
       class="card-pics"
       v-for="(cardObject, index) in shuffled">
       <single-card v-bind:card="cardObject"></single-card>
     </div>
-
     <hr>
+
     <p>newDeck</p>
     <div
       class="card-pics"
@@ -49,7 +81,7 @@
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <script>
-// import _ from 'lodash'
+import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import SingleCard from './SingleCard.vue'
 import Counter from './Counter.vue'
@@ -59,16 +91,27 @@ export default {
   props: ['propsIn'],
   data () {
     return {
-      propsOut: {
 
-      }
     }
   },
   computed: {
-    ...mapGetters(['newDeck', 'shuffled'])
+    ...mapGetters([
+      'newDeck',
+      'shuffled',
+      'player1Hand',
+      'player2Hand',
+      'player3Hand',
+      'player4Hand'
+    ])
   },
   methods: {
-    ...mapActions(['postShuffledDeck']),
+    ...mapActions([
+      'postShuffledDeck',
+      'postPlayer1Hand',
+      'postPlayer2Hand',
+      'postPlayer3Hand',
+      'postPlayer4Hand'
+    ]),
     goHome () {
       // Demo of programitic navigation
       this.$router.push('/')
@@ -77,8 +120,14 @@ export default {
       this.postShuffledDeck()
     }
   },
-  filters: {
-
+  watch: {
+    shuffled: function () {
+      let splitDeck = _.chunk(this.shuffled, 13)
+      this.postPlayer1Hand(splitDeck[0])
+      setTimeout(() => { this.postPlayer2Hand(splitDeck[1]) }, 250)
+      setTimeout(() => { this.postPlayer3Hand(splitDeck[2]) }, 500)
+      setTimeout(() => { this.postPlayer4Hand(splitDeck[3]) }, 750)
+    }
   },
   components: {
     Counter,

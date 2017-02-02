@@ -13,7 +13,11 @@ const state = {
 
   // Table Component State ----------------------------------------------
   newDeck: [],
-  shuffled: []
+  shuffled: [],
+  player1Hand: [],
+  player2Hand: [],
+  player3Hand: [],
+  player4Hand: []
 }
 
 const store = new Vuex.Store({

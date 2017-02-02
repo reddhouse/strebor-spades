@@ -18,3 +18,7 @@ export const recentHistory = state => {
 // Table Component Getters -----------------------------------------------
 export const newDeck = state => state.newDeck
 export const shuffled = state => state.shuffled
+export const player1Hand = state => state.player1Hand
+export const player2Hand = state => state.player2Hand
+export const player3Hand = state => state.player3Hand
+export const player4Hand = state => state.player4Hand

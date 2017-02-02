@@ -8,6 +8,7 @@ import App from './App'
 
 import Home from './components/Home.vue'
 import Table from './components/Table.vue'
+import Player1 from './components/Player1.vue'
 
 // 0. Install router & vuex
 Vue.use(VueRouter)
@@ -23,6 +24,7 @@ const routes = [
   { path: '/foo', component: Foo },
   { path: '/bar', component: Bar },
   { path: '/table', component: Table },
+  { path: '/player1', component: Player1 },
   { path: '/', component: Home }
 ]
 

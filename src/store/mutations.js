@@ -22,3 +22,15 @@ export const mutateNewDeck = (state, serverDeck) => {
 export const mutateShuffled = (state, serverShuffled) => {
   state.shuffled = serverShuffled
 }
+export const mutatePlayer1Hand = (state, serverPlayer1) => {
+  state.player1Hand = serverPlayer1
+}
+export const mutatePlayer2Hand = (state, serverPlayer2) => {
+  state.player2Hand = serverPlayer2
+}
+export const mutatePlayer3Hand = (state, serverPlayer3) => {
+  state.player3Hand = serverPlayer3
+}
+export const mutatePlayer4Hand = (state, serverPlayer4) => {
+  state.player4Hand = serverPlayer4
+}

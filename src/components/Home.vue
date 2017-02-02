@@ -7,7 +7,7 @@
     <img id="logo" src="https://s3-us-west-2.amazonaws.com/strebor-spades-images/KS.svg"></img>
     <div class="divider"></div>
     <div><router-link to="/table">Card Table</router-link></div>
-    <div><router-link to="/foo">Go to Foo</router-link></div>
+    <div><router-link to="/player1">Player 1</router-link></div>
     <div>Player 2</div>
     <div>Player 3</div>
     <div>Player 4</div>

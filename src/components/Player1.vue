@@ -1,38 +1,41 @@
 <template>
   <div class="player1-component">
     <p>Player 1</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in player1Hand">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
   </div>
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <script>
-// import { mapGetters, mapActions } from 'vuex'
-// import HelloChild from './HelloChild'
+import { mapGetters, mapActions } from 'vuex'
+import SingleCard from './SingleCard.vue'
 
 export default {
   name: 'player1-component',
-  props: ['propsIn'],
   data () {
     return {
-      propsOut: {
 
-      }
     }
   },
   computed: {
-    // ...mapGetters(['titleState'])
+    ...mapGetters(['player1Hand'])
   },
   methods: {
-    // ...mapActions(['setTitle'])
-  },
-  filters: {
-
+    ...mapActions(['setTitle'])
   },
   components: {
-    // HelloChild
+    SingleCard
   }
 }
 </script>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <style scoped>
+
+.card-pics {
+  display: inline-block;
+}
 
 </style>
