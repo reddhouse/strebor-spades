@@ -12,7 +12,8 @@ const state = {
   history: [],
 
   // Table Component State ----------------------------------------------
-  fullDeck: []
+  newDeck: [],
+  shuffled: []
 }
 
 const store = new Vuex.Store({

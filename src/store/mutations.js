@@ -16,6 +16,9 @@ export const decrement = state => {
 }
 
 // ArtistSearch Component Mutations --------------------------------------------
-export const receiveFullDeck = (state, serverDeck) => {
-  state.fullDeck = serverDeck
+export const mutateNewDeck = (state, serverDeck) => {
+  state.newDeck = serverDeck
+}
+export const mutateShuffled = (state, serverShuffled) => {
+  state.shuffled = serverShuffled
 }

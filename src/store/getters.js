@@ -16,4 +16,5 @@ export const recentHistory = state => {
 }
 
 // Table Component Getters -----------------------------------------------
-export const fullDeck = state => state.fullDeck
+export const newDeck = state => state.newDeck
+export const shuffled = state => state.shuffled

@@ -20,7 +20,7 @@
       <div class="third-third"> Team 2</div>
 
     </div>
-    <button>New Hand</button>
+    <button v-on:click="onDeal">Deal</button>
     <button>Undo</button>
     <button>Tally</button>
     <button>Reset</button>
@@ -30,9 +30,18 @@
     <counter></counter>
     <hr>
 
+    <p>shuffled</p>
     <div
       class="card-pics"
-      v-for="(cardObject, index) in fullDeck">
+      v-for="(cardObject, index) in shuffled">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+
+    <hr>
+    <p>newDeck</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in newDeck">
       <single-card v-bind:card="cardObject"></single-card>
     </div>
 
@@ -40,6 +49,7 @@
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <script>
+// import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import SingleCard from './SingleCard.vue'
 import Counter from './Counter.vue'
@@ -55,13 +65,16 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['fullDeck'])
+    ...mapGetters(['newDeck', 'shuffled'])
   },
   methods: {
-    ...mapActions(['setTitle']),
+    ...mapActions(['postShuffledDeck']),
     goHome () {
       // Demo of programitic navigation
       this.$router.push('/')
+    },
+    onDeal () {
+      this.postShuffledDeck()
     }
   },
   filters: {

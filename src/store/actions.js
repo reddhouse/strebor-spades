@@ -1,11 +1,11 @@
 // Instead of mutating the state, actions commit mutations.
 // We can pass a second argument to store.commit which is the "payload"
 // for the mutation. Payloads are typically objects.
-
+import _ from 'lodash'
 import axios from 'axios'
 
-// const apiURL = 'http://localhost:3000'
-const apiURL = '/api'
+const baseURL = 'http://localhost:3000'
+// const baseURL = '/api'
 
 // Counter Component Actions ---------------------------------------------------
 export const increment = ({ commit }) => commit('increment')
@@ -24,9 +24,27 @@ export const incrementAsync = ({ commit }) => {
 }
 
 // Table Component Actions ----------------------------------------------
-export const populateFullDeck = ({ commit }) => {
-  return axios.get(apiURL + '/fulldeck')
+export const populateNewDeck = ({ commit }) => {
+  return axios.get(baseURL + '/newdeck')
     .then(res => {
-      commit('receiveFullDeck', res.data)
+      commit('mutateNewDeck', res.data)
+    })
+}
+
+export const populateShuffled = ({ commit }) => {
+  return axios.get(baseURL + '/shuffled/1')
+    .then(res => {
+      commit('mutateShuffled', res.data.cards)
+    })
+}
+
+export const postShuffledDeck = ({ dispatch, state }) => {
+  let x = {
+    'id': 1,
+    'cards': _.shuffle(_.cloneDeep(state.newDeck))
+  }
+  return axios.put(baseURL + '/shuffled/1', x)
+    .then(res => {
+      dispatch('populateShuffled')
     })
 }

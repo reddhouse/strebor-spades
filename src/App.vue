@@ -21,7 +21,7 @@ export default {
     ...mapGetters(['titleState'])
   },
   methods: {
-    ...mapActions(['populateFullDeck'])
+    ...mapActions(['populateNewDeck'])
   },
   filters: {
 
@@ -30,7 +30,7 @@ export default {
 
   },
   mounted () {
-    this.populateFullDeck()
+    this.populateNewDeck()
   }
 }
 </script>
