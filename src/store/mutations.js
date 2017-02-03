@@ -4,7 +4,7 @@
 // The handler functions receieve state as their first argument.
 // Mutation are synchronous transactions. See actions for async operations.
 
-// Counter Component Mutations -------------------------------------------------
+// Counter Component Mutations, left beind for for examples --------------------
 export const increment = state => {
   state.count++
   state.history.push('increment')
@@ -15,7 +15,7 @@ export const decrement = state => {
   state.history.push('decrement')
 }
 
-// ArtistSearch Component Mutations --------------------------------------------
+// Table Component Mutations ---------------------------------------------------
 export const mutateNewDeck = (state, serverDeck) => {
   state.newDeck = serverDeck
 }
@@ -33,4 +33,9 @@ export const mutatePlayer3Hand = (state, serverPlayer3) => {
 }
 export const mutatePlayer4Hand = (state, serverPlayer4) => {
   state.player4Hand = serverPlayer4
+}
+
+// PlayableCard Component Mutations --------------------------------------------
+export const mutateTableHand = (state, serverTableHand) => {
+  state.tableHand = serverTableHand
 }

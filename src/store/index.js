@@ -11,13 +11,14 @@ const state = {
   count: 0,
   history: [],
 
-  // Table Component State ----------------------------------------------
+  // Table Component State -----------------------------------------------------
   newDeck: [],
   shuffled: [],
   player1Hand: [],
   player2Hand: [],
   player3Hand: [],
-  player4Hand: []
+  player4Hand: [],
+  tableHand: []
 }
 
 const store = new Vuex.Store({

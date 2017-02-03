@@ -1,6 +1,7 @@
 <template>
   <div class="table-component">
-    <p>Card Table</p>
+    <div class="title">Strebor St. Spades</div>
+    <p>Trumpet Case Table</p>
     <div class="layout-container">
 
       <div class="first-third">Team 1</div>
@@ -13,7 +14,19 @@
             <div class="center-spacer"></div>
             <div class="player4">Player 4<img id="card" src="https://s3-us-west-2.amazonaws.com/strebor-spades-images/AS.svg"></img></div>
           </div>
-          <div class="player1">1</div>
+
+          <div
+            class="player1"
+            v-if="tableHand.length > 0">
+            Player 1
+            <single-card v-bind:card="tableHand[0].card"></single-card>
+          </div>
+          <div
+            class="player1"
+            v-else>
+            Player 1 - Empty
+          </div>
+          
         </div>
       </div>
 
@@ -25,9 +38,6 @@
     <button>Tally</button>
     <button>Reset</button>
     <button v-on:click="goHome">Home</button>
-
-    <hr>
-    <counter></counter>
     <hr>
 
     <p>player1Hand</p>
@@ -84,7 +94,6 @@
 import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import SingleCard from './SingleCard.vue'
-import Counter from './Counter.vue'
 
 export default {
   name: 'table-component',
@@ -101,7 +110,8 @@ export default {
       'player1Hand',
       'player2Hand',
       'player3Hand',
-      'player4Hand'
+      'player4Hand',
+      'tableHand'
     ])
   },
   methods: {
@@ -130,13 +140,19 @@ export default {
     }
   },
   components: {
-    Counter,
     SingleCard
   }
 }
 </script>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <style scoped>
+
+.title
+{
+  font-weight: 400;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
 
 #card {
   max-height: 125px;

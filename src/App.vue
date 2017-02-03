@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="container">
 
-    <div class="title">Strebor St. Spades</div>
     <router-view></router-view>
 
   </div>
@@ -44,13 +43,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 10px;
-}
-
-.title
-{
-  font-weight: 400;
-  font-size: 1.5em;
-  margin-bottom: 10px;
 }
 
 @media (min-width: 321px) {
