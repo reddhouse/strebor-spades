@@ -1,19 +1,20 @@
 <template>
-  <transition name="slide-fade">
-  <div
-    class="playable-card"
-    v-on:click="sendCard">
-    <img v-bind:src="card.image"></img>
+  <div class="playble-card-component">
+    <!-- Displays individual card which, upon click, can be sent to the card table -->
+
+    <div v-on:click="sendCard">
+      <img v-bind:src="card.image"></img>
+    </div>
+
   </div>
-  </transition>
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 // import HelloChild from './HelloChild'
 
 export default {
-  name: 'playable-card',
+  name: 'playable-card-component',
   props: ['card', 'playerID'],
   data () {
     return {
@@ -21,7 +22,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['titleState'])
+
   },
   methods: {
     ...mapActions([
@@ -32,11 +33,14 @@ export default {
       'modifyPlayer4Hand'
     ]),
     sendCard () {
+      // Dispatch action which will write card to db and re-fresh tableHand state
       let payload = {
         'playerID': this.playerID,
         'card': this.card
       }
       this.putPlayedCard(payload)
+
+      // Dispatch action to remove recently played card from hand
       switch (this.playerID.toString()) {
         case '1':
           this.modifyPlayer1Hand(this.card)
@@ -53,9 +57,6 @@ export default {
       }
     }
   },
-  filters: {
-
-  },
   components: {
     // HelloChild
   }
@@ -66,20 +67,6 @@ export default {
 
 img {
   max-height: 125px;
-}
-
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-{
-  transform: translateY(-30px);
-  opacity: 0;
 }
 
 </style>

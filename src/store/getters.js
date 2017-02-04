@@ -26,3 +26,7 @@ export const player4Hand = state => state.player4Hand
 export const tableHand = state => state.tableHand
 
 export const teamScores = state => state.teamScores
+
+export const playerNames = state => state.playerNames
+
+export const roundScores = state => state.roundScores

@@ -44,3 +44,11 @@ export const mutateTableHand = (state, serverTableHand) => {
 export const mutateTeamScores = (state, serverScores) => {
   state.teamScores = serverScores
 }
+
+export const mutatePlayerNames = (state, serverNames) => {
+  state.playerNames = serverNames
+}
+
+export const mutateRoundScores = (state, serverScores) => {
+  state.roundScores = serverScores
+}

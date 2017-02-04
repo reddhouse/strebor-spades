@@ -25,7 +25,7 @@
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 // import HelloChild from './HelloChild'
 
 export default {
@@ -40,10 +40,10 @@ export default {
     }
   },
   computed: {
-    // ...mapGetters(['titleState'])
+    ...mapGetters(['roundScores'])
   },
   methods: {
-    ...mapActions(['postPrelimBid', 'postFinalBid', 'postScore']),
+    ...mapActions(['postPrelimBid', 'postFinalBid', 'postScore', 'putPlayedCard', 'putRoundScore']),
     handlePrelimBid () {
       let payload = {
         'team': this.team,
@@ -63,12 +63,27 @@ export default {
     handleScore () {
       let payload = {
         'team': this.team,
-        'localScore': this.localScore
+        'localScore': Number(this.localScore)
       }
       this.postScore(payload)
       this.alreadyBid1 = false
       this.alreadyBid2 = false
       this.localBid = ''
+      // Clear all hands on table now that round is over
+      setTimeout(() => { this.putPlayedCard({ 'playerID': 1, 'card': {} }) }, 250)
+      setTimeout(() => { this.putPlayedCard({ 'playerID': 2, 'card': {} }) }, 500)
+      setTimeout(() => { this.putPlayedCard({ 'playerID': 3, 'card': {} }) }, 750)
+      setTimeout(() => { this.putPlayedCard({ 'playerID': 4, 'card': {} }) }, 1000)
+      // Tally total score
+      let oldTotal = this.roundScores[this.team - 1].total
+      let newPoints = Number(this.localScore)
+      let newTotal = oldTotal + newPoints
+      // Clear round Score
+      let payload2 = {
+        'team': this.team,
+        'scorePkg': { 'total': newTotal, 'score': 0 }
+      }
+      setTimeout(() => { this.putRoundScore(payload2) }, 1250)
       this.localScore = ''
     }
   },

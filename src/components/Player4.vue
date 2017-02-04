@@ -1,5 +1,5 @@
 <template>
-  <div class="player1-component">
+  <div class="player4-component">
     <!-- Display ordered cards in player's hand -->
 
     <div
@@ -7,7 +7,7 @@
       v-for="(cardObject, index) in orderedCards">
       <playable-card
         v-bind:card="cardObject"
-        v-bind:playerID="1">
+        v-bind:playerID="4">
       </playable-card>
     </div>
 
@@ -20,19 +20,19 @@ import { mapGetters, mapActions } from 'vuex'
 import PlayableCard from './PlayableCard.vue'
 
 export default {
-  name: 'player1-component',
+  name: 'player4-component',
   data () {
     return {
 
     }
   },
   computed: {
-    ...mapGetters(['player1Hand']),
+    ...mapGetters(['player4Hand']),
     orderedCards () {
-      let spades = _.orderBy(_.filter(this.player1Hand, ['suit', 'Spades']), ['rank'], ['asc'])
-      let diamonds = _.orderBy(_.filter(this.player1Hand, ['suit', 'Diamonds']), ['rank'], ['asc'])
-      let clubs = _.orderBy(_.filter(this.player1Hand, ['suit', 'Clubs']), ['rank'], ['asc'])
-      let hearts = _.orderBy(_.filter(this.player1Hand, ['suit', 'Hearts']), ['rank'], ['asc'])
+      let spades = _.orderBy(_.filter(this.player4Hand, ['suit', 'Spades']), ['rank'], ['asc'])
+      let diamonds = _.orderBy(_.filter(this.player4Hand, ['suit', 'Diamonds']), ['rank'], ['asc'])
+      let clubs = _.orderBy(_.filter(this.player4Hand, ['suit', 'Clubs']), ['rank'], ['asc'])
+      let hearts = _.orderBy(_.filter(this.player4Hand, ['suit', 'Hearts']), ['rank'], ['asc'])
 
       // When we're lacking one suite, keep colors alternating so it's easier to see cards
       if (diamonds.length === 0) {
@@ -48,13 +48,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['populatePlayer1Hand'])
+    ...mapActions(['populatePlayer4Hand'])
   },
   components: {
     PlayableCard
   },
   mounted () {
-    this.populatePlayer1Hand()
+    this.populatePlayer4Hand()
   }
 }
 </script>

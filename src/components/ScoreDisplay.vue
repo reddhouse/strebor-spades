@@ -1,5 +1,6 @@
 <template>
   <div class="score-display-component">
+
     <div class="flex-container">
       <div class="flex1"></div>
       <div class="flex2">{{ scoreList.bid }}</div>
@@ -7,6 +8,7 @@
       <div class="flex4">{{ scoreList.score }}</div>
       <div class="flex5"></div>
     </div>
+    
   </div>
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->

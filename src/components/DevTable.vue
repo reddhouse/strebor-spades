@@ -78,6 +78,54 @@
     <button v-on:click="goHome">Home</button>
     <hr>
 
+    <!-- View All Hands, Development Only -->
+    <p>player1Hand</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in player1Hand">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+    <hr>
+
+    <p>player2Hand</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in player2Hand">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+    <hr>
+
+    <p>player3Hand</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in player3Hand">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+    <hr>
+
+    <p>player4Hand</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in player4Hand">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+    <hr>
+
+    <p>shuffled</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in shuffled">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+    <hr>
+
+    <p>newDeck</p>
+    <div
+      class="card-pics"
+      v-for="(cardObject, index) in newDeck">
+      <single-card v-bind:card="cardObject"></single-card>
+    </div>
+
   </div>
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->

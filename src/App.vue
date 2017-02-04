@@ -11,29 +11,15 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'app',
-  data () {
-    return {
-
-    }
-  },
-  computed: {
-    // ...mapGetters(['foo']),
-  },
   methods: {
     ...mapActions([
       'populateNewDeck',
-      'populateTeamScores'
+      'populatePlayerNames'
     ])
-  },
-  filters: {
-
-  },
-  components: {
-
   },
   mounted () {
     this.populateNewDeck()
-    // this.populateTeamScores()
+    this.populatePlayerNames()
   }
 }
 </script>

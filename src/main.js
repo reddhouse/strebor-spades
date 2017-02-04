@@ -8,7 +8,11 @@ import App from './App'
 
 import Home from './components/Home.vue'
 import Table from './components/Table.vue'
+import DevTable from './components/DevTable.vue'
 import Player1 from './components/Player1.vue'
+import Player2 from './components/Player2.vue'
+import Player3 from './components/Player3.vue'
+import Player4 from './components/Player4.vue'
 
 // 0. Install router & vuex
 Vue.use(VueRouter)
@@ -24,7 +28,11 @@ const routes = [
   { path: '/foo', component: Foo },
   { path: '/bar', component: Bar },
   { path: '/table', component: Table },
+  { path: '/devtable', component: DevTable },
   { path: '/player1', component: Player1 },
+  { path: '/player2', component: Player2 },
+  { path: '/player3', component: Player3 },
+  { path: '/player4', component: Player4 },
   { path: '/', component: Home }
 ]
 
