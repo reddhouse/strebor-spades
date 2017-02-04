@@ -7,7 +7,7 @@
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'app',
@@ -17,10 +17,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['titleState'])
+    // ...mapGetters(['foo']),
   },
   methods: {
-    ...mapActions(['populateNewDeck'])
+    ...mapActions([
+      'populateNewDeck',
+      'populateTeamScores'
+    ])
   },
   filters: {
 
@@ -30,6 +33,7 @@ export default {
   },
   mounted () {
     this.populateNewDeck()
+    // this.populateTeamScores()
   }
 }
 </script>

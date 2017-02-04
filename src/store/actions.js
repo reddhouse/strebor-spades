@@ -7,8 +7,24 @@ import axios from 'axios'
 const baseURL = 'http://localhost:3000'
 // const baseURL = '/api'
 
-// Table Component Actions -----------------------------------------------------
+// Counter Component Actions, left behind for examples  ------------------------
+export const increment = ({ commit }) => commit('increment')
+export const decrement = ({ commit }) => commit('decrement')
+
+export const incrementIfOdd = ({ commit, state }) => {
+  if ((state.count + 1) % 2 === 0) {
+    commit('increment')
+  }
+}
+export const incrementAsync = ({ commit }) => {
+  setTimeout(() => {
+    commit('increment')
+  }, 1000)
+}
+
+// First Round of Table Component Actions --------------------------------------
 export const populateNewDeck = ({ commit }) => {
+  // Hydrate state with new deck from db
   return axios.get(baseURL + '/newdeck')
     .then(res => {
       commit('mutateNewDeck', res.data)
@@ -50,7 +66,8 @@ export const populatePlayer4Hand = ({ commit }) => {
     })
 }
 
-export const postPlayer1Hand = ({ dispatch }, cardSet) => {
+export const putPlayer1Hand = ({ dispatch }, cardSet) => {
+  // Called from the Table Component, write player 1's hand to db
   let pkg = { 'cards': cardSet }
   return axios.put(baseURL + '/players/1', pkg)
     .then(res => {
@@ -58,7 +75,7 @@ export const postPlayer1Hand = ({ dispatch }, cardSet) => {
     })
 }
 
-export const postPlayer2Hand = ({ dispatch }, cardSet) => {
+export const putPlayer2Hand = ({ dispatch }, cardSet) => {
   let pkg = { 'cards': cardSet }
   return axios.put(baseURL + '/players/2', pkg)
     .then(res => {
@@ -66,7 +83,7 @@ export const postPlayer2Hand = ({ dispatch }, cardSet) => {
     })
 }
 
-export const postPlayer3Hand = ({ dispatch }, cardSet) => {
+export const putPlayer3Hand = ({ dispatch }, cardSet) => {
   let pkg = { 'cards': cardSet }
   return axios.put(baseURL + '/players/3', pkg)
     .then(res => {
@@ -74,7 +91,7 @@ export const postPlayer3Hand = ({ dispatch }, cardSet) => {
     })
 }
 
-export const postPlayer4Hand = ({ dispatch }, cardSet) => {
+export const putPlayer4Hand = ({ dispatch }, cardSet) => {
   let pkg = { 'cards': cardSet }
   return axios.put(baseURL + '/players/4', pkg)
     .then(res => {
@@ -82,7 +99,8 @@ export const postPlayer4Hand = ({ dispatch }, cardSet) => {
     })
 }
 
-export const postShuffledDeck = ({ dispatch, state }) => {
+export const putShuffledDeck = ({ dispatch, state }) => {
+  // Shuffle three times and put shuffled deck to db
   let shuffle1 = _.shuffle(_.cloneDeep(state.newDeck))
   let shuffle2 = _.shuffle(shuffle1)
   let shuffle3 = _.shuffle(shuffle2)
@@ -93,7 +111,7 @@ export const postShuffledDeck = ({ dispatch, state }) => {
     })
 }
 
-// PlayableCard Component Actions ----------------------------------------------
+// Player Card Play Related Actions --------------------------------------------
 export const populateTableHand = ({ commit }) => {
   return axios.get(baseURL + '/tablehand')
     .then(res => {
@@ -101,10 +119,116 @@ export const populateTableHand = ({ commit }) => {
     })
 }
 
-export const postPlayedCard = ({ dispatch }, payload) => {
+export const putPlayedCard = ({ dispatch }, payload) => {
+  // Show recently played card on card table
   let pkg = { 'card': payload.card }
   return axios.put(baseURL + '/tablehand/' + payload.playerID, pkg)
     .then(res => {
       dispatch('populateTableHand')
     })
 }
+
+export const modifyPlayer1Hand = ({ dispatch, state }, card) => {
+  // Remove recently played card from player's hand
+  let oldHand = _.cloneDeep(state.player1Hand)
+  let newHand = _.reject(oldHand, card)
+  dispatch('putPlayer1Hand', newHand)
+}
+
+// Scoring Related Actions -----------------------------------------------------
+export const populateTeamScores = ({ commit }) => {
+  return axios.get(baseURL + '/teamscores')
+    .then(res => {
+      commit('mutateTeamScores', res.data)
+    })
+}
+
+export const postPrelimBid = ({ dispatch, state }, payload) => {
+  let id = payload.team
+  let bid = payload.localBid
+  let yourTeamScores = _.cloneDeep(state.teamScores[id - 1].scores)
+  let newBid = {
+    'bid': bid,
+    'score': ''
+  }
+  let pkg = {
+    'scores': _.concat(yourTeamScores, newBid)
+  }
+  return axios.put(baseURL + '/teamscores/' + id, pkg)
+    .then(res => {
+      dispatch('populateTeamScores')
+    })
+}
+
+export const postFinalBid = ({ dispatch, state }, payload) => {
+  let id = payload.team
+  let bid = payload.localBid
+  let yourTeamScores = _.cloneDeep(state.teamScores[id - 1].scores)
+  let slicedScores = yourTeamScores.slice(0, yourTeamScores.length - 1)
+  let newBid = {
+    'bid': bid,
+    'score': ''
+  }
+  let pkg = {
+    'scores': _.concat(slicedScores, newBid)
+  }
+  return axios.put(baseURL + '/teamscores/' + id, pkg)
+    .then(res => {
+      dispatch('populateTeamScores')
+    })
+}
+
+export const postScore = ({ dispatch, state }, payload) => {
+  let id = payload.team
+  let score = payload.localScore
+  let yourTeamScores = _.cloneDeep(state.teamScores[id - 1].scores)
+  let originalBid = yourTeamScores[yourTeamScores.length - 1].bid
+  let slicedScores = yourTeamScores.slice(0, yourTeamScores.length - 1)
+  let newScore = {
+    'bid': originalBid,
+    'score': score
+  }
+  let pkg = {
+    'scores': _.concat(slicedScores, newScore)
+  }
+  return axios.put(baseURL + '/teamscores/' + id, pkg)
+    .then(res => {
+      dispatch('populateTeamScores')
+    })
+}
+
+// export const postScore = ({ dispatch, state }, payload) => {
+//   // Determine if we should post bid or score, then write to db
+//   let id = payload.team
+//   let bid = payload.localBid
+//   let score = payload.localScore
+//   let yourTeamScores = _.cloneDeep(state.teamScores[id - 1].scores)
+//   let lastScore = yourTeamScores[yourTeamScores.length - 1]
+//   if (lastScore.score !== '') {
+//     // This is a bid entry, no score is needed/present yet
+//     let newScore = {
+//       'bid': bid,
+//       'score': ''
+//     }
+//     let pkg = {
+//       'scores': _.concat(yourTeamScores, newScore)
+//     }
+//     return axios.put(baseURL + '/teamscores/' + id, pkg)
+//       .then(res => {
+//         dispatch('populateTeamScores')
+//       })
+//   } else {
+//     // Bid to remain the same, only score needs to be updated
+//     let newScore = {
+//       'bid': lastScore.bid,
+//       'score': score
+//     }
+//     let pkg = {
+//       'scores': _.concat(yourTeamScores.pop(), newScore)
+//     }
+//     return axios.put(baseURL + '/teamscores/' + id, pkg)
+//       .then(res => {
+//         dispatch('populateTeamScores')
+//       })
+//   }
+// }

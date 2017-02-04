@@ -4,8 +4,16 @@
     <p>Trumpet Case Table</p>
     <div class="layout-container">
 
-      <div class="first-third">Team 1</div>
+      <!-- Team 1 Scoring -->
+      <div class="first-third">
+        <div class="score-header">Team 1</div>
+        <div v-for="(allScores, index) in teamScores[0].scores">
+          <score-display v-bind:scoreList="allScores"></score-display>
+        </div>
+        <score-input v-bind:team="1"></score-input>
+      </div>
 
+      <!-- Card Table, Center Section -->
       <div class="second-third">
         <div class="table-container">
           <div class="player3">3</div>
@@ -14,7 +22,6 @@
             <div class="center-spacer"></div>
             <div class="player4">Player 4<img id="card" src="https://s3-us-west-2.amazonaws.com/strebor-spades-images/AS.svg"></img></div>
           </div>
-
           <div
             class="player1"
             v-if="tableHand.length > 0">
@@ -24,14 +31,22 @@
           <div
             class="player1"
             v-else>
-            Player 1 - Empty
+            Player 1
           </div>
-          
+
         </div>
       </div>
 
-      <div class="third-third"> Team 2</div>
+      <!-- Team 2 Scoring -->
+      <div class="third-third">
+        <div class="score-header">Team 2</div>
+        <div v-for="(allScores, index) in teamScores[1].scores">
+          <score-display v-bind:scoreList="allScores"></score-display>
+        </div>
+        <score-input v-bind:team="2"></score-input>
+      </div>
 
+    <!-- Navigation  -->
     </div>
     <button v-on:click="onDeal">Deal</button>
     <button>Undo</button>
@@ -40,6 +55,7 @@
     <button v-on:click="goHome">Home</button>
     <hr>
 
+    <!-- View All Hands, Development Only -->
     <p>player1Hand</p>
     <div
       class="card-pics"
@@ -94,6 +110,8 @@
 import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import SingleCard from './SingleCard.vue'
+import ScoreDisplay from './ScoreDisplay.vue'
+import ScoreInput from './ScoreInput.vue'
 
 export default {
   name: 'table-component',
@@ -111,41 +129,49 @@ export default {
       'player2Hand',
       'player3Hand',
       'player4Hand',
-      'tableHand'
+      'tableHand',
+      'teamScores'
     ])
   },
   methods: {
     ...mapActions([
-      'postShuffledDeck',
-      'postPlayer1Hand',
-      'postPlayer2Hand',
-      'postPlayer3Hand',
-      'postPlayer4Hand'
+      'putShuffledDeck',
+      'putPlayer1Hand',
+      'putPlayer2Hand',
+      'putPlayer3Hand',
+      'putPlayer4Hand'
     ]),
     goHome () {
       // Demo of programitic navigation
       this.$router.push('/')
     },
     onDeal () {
-      this.postShuffledDeck()
+      this.putShuffledDeck()
     }
   },
   watch: {
     shuffled: function () {
+      // Deal 13 cards to each player, call actions to write to db
       let splitDeck = _.chunk(this.shuffled, 13)
-      this.postPlayer1Hand(splitDeck[0])
-      setTimeout(() => { this.postPlayer2Hand(splitDeck[1]) }, 250)
-      setTimeout(() => { this.postPlayer3Hand(splitDeck[2]) }, 500)
-      setTimeout(() => { this.postPlayer4Hand(splitDeck[3]) }, 750)
+      this.putPlayer1Hand(splitDeck[0])
+      setTimeout(() => { this.putPlayer2Hand(splitDeck[1]) }, 250)
+      setTimeout(() => { this.putPlayer3Hand(splitDeck[2]) }, 500)
+      setTimeout(() => { this.putPlayer4Hand(splitDeck[3]) }, 750)
     }
   },
   components: {
-    SingleCard
+    SingleCard,
+    ScoreDisplay,
+    ScoreInput
   }
 }
 </script>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <style scoped>
+
+.score-header {
+  font-weight: 500;
+}
 
 .title
 {

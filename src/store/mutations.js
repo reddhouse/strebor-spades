@@ -39,3 +39,8 @@ export const mutatePlayer4Hand = (state, serverPlayer4) => {
 export const mutateTableHand = (state, serverTableHand) => {
   state.tableHand = serverTableHand
 }
+
+// Scoring Related Mutations ---------------------------------------------------
+export const mutateTeamScores = (state, serverScores) => {
+  state.teamScores = serverScores
+}

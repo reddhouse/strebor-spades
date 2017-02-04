@@ -18,7 +18,8 @@ const state = {
   player2Hand: [],
   player3Hand: [],
   player4Hand: [],
-  tableHand: []
+  tableHand: [],
+  teamScores: [{ 'scores': [], 'id': 1 }, { 'scores': [], 'id': 2 }]
 }
 
 const store = new Vuex.Store({

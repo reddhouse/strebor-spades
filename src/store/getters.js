@@ -15,7 +15,7 @@ export const recentHistory = state => {
     .replace(/,/g, ', ')
 }
 
-// Table Component Getters -----------------------------------------------------
+// Strebor Spades Getters ------------------------------------------------------
 export const newDeck = state => state.newDeck
 export const shuffled = state => state.shuffled
 export const player1Hand = state => state.player1Hand
@@ -24,3 +24,5 @@ export const player3Hand = state => state.player3Hand
 export const player4Hand = state => state.player4Hand
 
 export const tableHand = state => state.tableHand
+
+export const teamScores = state => state.teamScores

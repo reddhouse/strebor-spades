@@ -1,15 +1,15 @@
 <template>
   <div class="player1-component">
+
     <div
       class="card-pics"
       v-for="(cardObject, index) in orderedCards">
-
       <playable-card
         v-bind:card="cardObject"
         v-bind:playerID="1">
       </playable-card>
-
     </div>
+
   </div>
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
