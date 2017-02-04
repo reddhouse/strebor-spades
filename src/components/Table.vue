@@ -94,8 +94,17 @@ export default {
   data () {
     return {
       local1RoundScore: 0,
-      local2RoundScore: 0
+      local2RoundScore: 0,
+      timer: ''
     }
+  },
+  created () {
+    // Temp solution until I figure out websockets. Refresh all necessary table
+    // components at set intervals
+    this.populateTeamScores()
+    this.populateRoundScores()
+    this.refreshStuff()
+    this.timer = setInterval(this.refreshStuff, 3000)
   },
   computed: {
     ...mapGetters([
@@ -120,7 +129,10 @@ export default {
       'putPlayer4Hand',
       'resetScores',
       'putPlayedCard',
-      'putRoundScore'
+      'putRoundScore',
+      'populateTableHand',
+      'populateTeamScores',
+      'populateRoundScores'
     ]),
     goHome () {
       // Demo of programitic navigation
@@ -162,6 +174,10 @@ export default {
         'scorePkg': { 'total': this.roundScores[team - 1].total, 'score': this.roundScores[team - 1].score + 1 }
       }
       setTimeout(() => { this.putRoundScore(payload) }, 1250)
+    },
+    refreshStuff () {
+      console.log('Ping')
+      this.populateTableHand()
     }
   },
   watch: {
@@ -178,6 +194,9 @@ export default {
     SingleCard,
     ScoreDisplay,
     ScoreInput
+  },
+  beforeDestroy () {
+    clearInterval(this.timer)
   }
 }
 </script>

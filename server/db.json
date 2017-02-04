@@ -23,7 +23,12 @@
       "id": 1
     },
     {
-      "scores": [],
+      "scores": [
+        {
+          "bid": "5",
+          "score": 50
+        }
+      ],
       "id": 2
     }
   ],
@@ -34,7 +39,7 @@
       "id": 1
     },
     {
-      "total": 0,
+      "total": 50,
       "score": 0,
       "id": 2
     }
@@ -59,38 +64,41 @@
   ],
   "players": [
     {
-      "cards": [],
-      "id": 1
-    },
-    {
-      "cards": [],
-      "id": 2
-    },
-    {
-      "cards": [],
-      "id": 3
-    },
-    {
-      "cards": [],
-      "id": 4
-    }
-  ],
-  "shuffled": [
-    {
       "cards": [
         {
-          "value": "Queen",
+          "value": "3",
           "suit": "Diamonds",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QD.svg",
-          "rank": 18,
-          "code": "QD"
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3D.svg",
+          "rank": 27,
+          "code": "3D"
         },
         {
-          "value": "Ace",
-          "suit": "Clubs",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/AC.svg",
-          "rank": 16,
-          "code": "AC"
+          "value": "5",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/5D.svg",
+          "rank": 25,
+          "code": "5D"
+        },
+        {
+          "value": "9",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/9S.svg",
+          "rank": 9,
+          "code": "9S"
+        },
+        {
+          "value": "2",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/2S.svg",
+          "rank": 3,
+          "code": "2S"
+        },
+        {
+          "value": "Jack",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/JS.svg",
+          "rank": 7,
+          "code": "JS"
         },
         {
           "value": "7",
@@ -100,25 +108,79 @@
           "code": "7S"
         },
         {
-          "value": "4",
-          "suit": "Diamonds",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4D.svg",
-          "rank": 26,
-          "code": "4D"
+          "value": "King",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KH.svg",
+          "rank": 17,
+          "code": "KH"
         },
         {
-          "value": "Queen",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QS.svg",
-          "rank": 6,
-          "code": "QS"
+          "value": "6",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/6D.svg",
+          "rank": 24,
+          "code": "6D"
+        },
+        {
+          "value": "King",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KD.svg",
+          "rank": 17,
+          "code": "KD"
         },
         {
           "value": "10",
-          "suit": "Diamonds",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10D.svg",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10H.svg",
           "rank": 20,
-          "code": "10D"
+          "code": "10H"
+        },
+        {
+          "value": "8",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8C.svg",
+          "rank": 22,
+          "code": "8C"
+        },
+        {
+          "value": "6",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/6S.svg",
+          "rank": 12,
+          "code": "6S"
+        },
+        {
+          "value": "3",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3S.svg",
+          "rank": 15,
+          "code": "3S"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "cards": [
+        {
+          "value": "Jack",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/JD.svg",
+          "rank": 19,
+          "code": "JD"
+        },
+        {
+          "value": "3",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3C.svg",
+          "rank": 27,
+          "code": "3C"
+        },
+        {
+          "value": "10",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10S.svg",
+          "rank": 8,
+          "code": "10S"
         },
         {
           "value": "9",
@@ -129,45 +191,10 @@
         },
         {
           "value": "10",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10S.svg",
-          "rank": 8,
-          "code": "10S"
-        },
-        {
-          "value": "Jack",
-          "suit": "Diamonds",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/JD.svg",
-          "rank": 19,
-          "code": "JD"
-        },
-        {
-          "value": "King",
-          "suit": "Clubs",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KC.svg",
-          "rank": 17,
-          "code": "KC"
-        },
-        {
-          "value": "10",
           "suit": "Clubs",
           "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10C.svg",
           "rank": 20,
           "code": "10C"
-        },
-        {
-          "value": "10",
-          "suit": "Hearts",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10H.svg",
-          "rank": 20,
-          "code": "10H"
-        },
-        {
-          "value": "Small Joker",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/SJ.svg",
-          "rank": 2,
-          "code": "SJ"
         },
         {
           "value": "Ace",
@@ -184,60 +211,65 @@
           "code": "JH"
         },
         {
-          "value": "Ace",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/AS.svg",
-          "rank": 4,
-          "code": "AS"
-        },
-        {
-          "value": "3",
-          "suit": "Hearts",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3H.svg",
-          "rank": 27,
-          "code": "3H"
-        },
-        {
-          "value": "6",
+          "value": "7",
           "suit": "Diamonds",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/6D.svg",
-          "rank": 24,
-          "code": "6D"
-        },
-        {
-          "value": "6",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/6S.svg",
-          "rank": 12,
-          "code": "6S"
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/7D.svg",
+          "rank": 23,
+          "code": "7D"
         },
         {
           "value": "5",
-          "suit": "Clubs",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/5C.svg",
-          "rank": 25,
-          "code": "5C"
-        },
-        {
-          "value": "3",
-          "suit": "Clubs",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3C.svg",
-          "rank": 27,
-          "code": "3C"
-        },
-        {
-          "value": "8",
-          "suit": "Clubs",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8C.svg",
-          "rank": 22,
-          "code": "8C"
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/5S.svg",
+          "rank": 13,
+          "code": "5S"
         },
         {
           "value": "Queen",
-          "suit": "Clubs",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QC.svg",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QD.svg",
           "rank": 18,
-          "code": "QC"
+          "code": "QD"
+        },
+        {
+          "value": "9",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/9H.svg",
+          "rank": 21,
+          "code": "9H"
+        },
+        {
+          "value": "2",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/2C.svg",
+          "rank": 28,
+          "code": "2C"
+        },
+        {
+          "value": "Ace",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/AC.svg",
+          "rank": 16,
+          "code": "AC"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "cards": [
+        {
+          "value": "6",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/6H.svg",
+          "rank": 24,
+          "code": "6H"
+        },
+        {
+          "value": "4",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4C.svg",
+          "rank": 26,
+          "code": "4C"
         },
         {
           "value": "4",
@@ -247,6 +279,48 @@
           "code": "4H"
         },
         {
+          "value": "Queen",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QH.svg",
+          "rank": 18,
+          "code": "QH"
+        },
+        {
+          "value": "7",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/7H.svg",
+          "rank": 23,
+          "code": "7H"
+        },
+        {
+          "value": "8",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8H.svg",
+          "rank": 22,
+          "code": "8H"
+        },
+        {
+          "value": "5",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/5C.svg",
+          "rank": 25,
+          "code": "5C"
+        },
+        {
+          "value": "4",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4D.svg",
+          "rank": 26,
+          "code": "4D"
+        },
+        {
+          "value": "Jack",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/JC.svg",
+          "rank": 19,
+          "code": "JC"
+        },
+        {
           "value": "6",
           "suit": "Clubs",
           "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/6C.svg",
@@ -254,18 +328,11 @@
           "code": "6C"
         },
         {
-          "value": "King",
-          "suit": "Diamonds",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KD.svg",
-          "rank": 17,
-          "code": "KD"
-        },
-        {
-          "value": "7",
-          "suit": "Diamonds",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/7D.svg",
-          "rank": 23,
-          "code": "7D"
+          "value": "Queen",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QC.svg",
+          "rank": 18,
+          "code": "QC"
         },
         {
           "value": "7",
@@ -280,6 +347,60 @@
           "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8S.svg",
           "rank": 10,
           "code": "8S"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "cards": [
+        {
+          "value": "3",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3H.svg",
+          "rank": 27,
+          "code": "3H"
+        },
+        {
+          "value": "9",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/9C.svg",
+          "rank": 21,
+          "code": "9C"
+        },
+        {
+          "value": "4",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4S.svg",
+          "rank": 14,
+          "code": "4S"
+        },
+        {
+          "value": "10",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10D.svg",
+          "rank": 20,
+          "code": "10D"
+        },
+        {
+          "value": "Queen",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QS.svg",
+          "rank": 6,
+          "code": "QS"
+        },
+        {
+          "value": "Ace",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/AD.svg",
+          "rank": 16,
+          "code": "AD"
+        },
+        {
+          "value": "King",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KC.svg",
+          "rank": 17,
+          "code": "KC"
         },
         {
           "value": "Big Joker",
@@ -289,39 +410,18 @@
           "code": "BJ"
         },
         {
-          "value": "8",
-          "suit": "Hearts",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8H.svg",
-          "rank": 22,
-          "code": "8H"
-        },
-        {
-          "value": "3",
-          "suit": "Diamonds",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3D.svg",
-          "rank": 27,
-          "code": "3D"
-        },
-        {
-          "value": "5",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/5S.svg",
-          "rank": 13,
-          "code": "5S"
-        },
-        {
-          "value": "3",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3S.svg",
-          "rank": 15,
-          "code": "3S"
-        },
-        {
           "value": "Ace",
-          "suit": "Diamonds",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/AD.svg",
-          "rank": 16,
-          "code": "AD"
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/AS.svg",
+          "rank": 4,
+          "code": "AS"
+        },
+        {
+          "value": "Small Joker",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/SJ.svg",
+          "rank": 2,
+          "code": "SJ"
         },
         {
           "value": "King",
@@ -338,11 +438,25 @@
           "code": "5H"
         },
         {
-          "value": "9",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/9S.svg",
-          "rank": 9,
-          "code": "9S"
+          "value": "8",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8D.svg",
+          "rank": 22,
+          "code": "8D"
+        }
+      ],
+      "id": 4
+    }
+  ],
+  "shuffled": [
+    {
+      "cards": [
+        {
+          "value": "3",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3D.svg",
+          "rank": 27,
+          "code": "3D"
         },
         {
           "value": "5",
@@ -352,11 +466,151 @@
           "code": "5D"
         },
         {
+          "value": "9",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/9S.svg",
+          "rank": 9,
+          "code": "9S"
+        },
+        {
+          "value": "2",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/2S.svg",
+          "rank": 3,
+          "code": "2S"
+        },
+        {
+          "value": "Jack",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/JS.svg",
+          "rank": 7,
+          "code": "JS"
+        },
+        {
           "value": "7",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/7S.svg",
+          "rank": 11,
+          "code": "7S"
+        },
+        {
+          "value": "King",
           "suit": "Hearts",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/7H.svg",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KH.svg",
+          "rank": 17,
+          "code": "KH"
+        },
+        {
+          "value": "6",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/6D.svg",
+          "rank": 24,
+          "code": "6D"
+        },
+        {
+          "value": "King",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KD.svg",
+          "rank": 17,
+          "code": "KD"
+        },
+        {
+          "value": "10",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10H.svg",
+          "rank": 20,
+          "code": "10H"
+        },
+        {
+          "value": "8",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8C.svg",
+          "rank": 22,
+          "code": "8C"
+        },
+        {
+          "value": "6",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/6S.svg",
+          "rank": 12,
+          "code": "6S"
+        },
+        {
+          "value": "3",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3S.svg",
+          "rank": 15,
+          "code": "3S"
+        },
+        {
+          "value": "Jack",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/JD.svg",
+          "rank": 19,
+          "code": "JD"
+        },
+        {
+          "value": "3",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3C.svg",
+          "rank": 27,
+          "code": "3C"
+        },
+        {
+          "value": "10",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10S.svg",
+          "rank": 8,
+          "code": "10S"
+        },
+        {
+          "value": "9",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/9D.svg",
+          "rank": 21,
+          "code": "9D"
+        },
+        {
+          "value": "10",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10C.svg",
+          "rank": 20,
+          "code": "10C"
+        },
+        {
+          "value": "Ace",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/AH.svg",
+          "rank": 16,
+          "code": "AH"
+        },
+        {
+          "value": "Jack",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/JH.svg",
+          "rank": 19,
+          "code": "JH"
+        },
+        {
+          "value": "7",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/7D.svg",
           "rank": 23,
-          "code": "7H"
+          "code": "7D"
+        },
+        {
+          "value": "5",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/5S.svg",
+          "rank": 13,
+          "code": "5S"
+        },
+        {
+          "value": "Queen",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QD.svg",
+          "rank": 18,
+          "code": "QD"
         },
         {
           "value": "9",
@@ -367,24 +621,17 @@
         },
         {
           "value": "2",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/2S.svg",
-          "rank": 3,
-          "code": "2S"
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/2C.svg",
+          "rank": 28,
+          "code": "2C"
         },
         {
-          "value": "4",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4S.svg",
-          "rank": 14,
-          "code": "4S"
-        },
-        {
-          "value": "8",
-          "suit": "Diamonds",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8D.svg",
-          "rank": 22,
-          "code": "8D"
+          "value": "Ace",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/AC.svg",
+          "rank": 16,
+          "code": "AC"
         },
         {
           "value": "6",
@@ -394,32 +641,18 @@
           "code": "6H"
         },
         {
-          "value": "Jack",
-          "suit": "Spades",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/JS.svg",
-          "rank": 7,
-          "code": "JS"
-        },
-        {
-          "value": "King",
-          "suit": "Hearts",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KH.svg",
-          "rank": 17,
-          "code": "KH"
-        },
-        {
-          "value": "2",
-          "suit": "Clubs",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/2C.svg",
-          "rank": 28,
-          "code": "2C"
-        },
-        {
           "value": "4",
           "suit": "Clubs",
           "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4C.svg",
           "rank": 26,
           "code": "4C"
+        },
+        {
+          "value": "4",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4H.svg",
+          "rank": 26,
+          "code": "4H"
         },
         {
           "value": "Queen",
@@ -429,11 +662,32 @@
           "code": "QH"
         },
         {
-          "value": "9",
+          "value": "7",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/7H.svg",
+          "rank": 23,
+          "code": "7H"
+        },
+        {
+          "value": "8",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8H.svg",
+          "rank": 22,
+          "code": "8H"
+        },
+        {
+          "value": "5",
           "suit": "Clubs",
-          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/9C.svg",
-          "rank": 21,
-          "code": "9C"
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/5C.svg",
+          "rank": 25,
+          "code": "5C"
+        },
+        {
+          "value": "4",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4D.svg",
+          "rank": 26,
+          "code": "4D"
         },
         {
           "value": "Jack",
@@ -441,6 +695,125 @@
           "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/JC.svg",
           "rank": 19,
           "code": "JC"
+        },
+        {
+          "value": "6",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/6C.svg",
+          "rank": 24,
+          "code": "6C"
+        },
+        {
+          "value": "Queen",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QC.svg",
+          "rank": 18,
+          "code": "QC"
+        },
+        {
+          "value": "7",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/7C.svg",
+          "rank": 23,
+          "code": "7C"
+        },
+        {
+          "value": "8",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8S.svg",
+          "rank": 10,
+          "code": "8S"
+        },
+        {
+          "value": "3",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/3H.svg",
+          "rank": 27,
+          "code": "3H"
+        },
+        {
+          "value": "9",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/9C.svg",
+          "rank": 21,
+          "code": "9C"
+        },
+        {
+          "value": "4",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/4S.svg",
+          "rank": 14,
+          "code": "4S"
+        },
+        {
+          "value": "10",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/10D.svg",
+          "rank": 20,
+          "code": "10D"
+        },
+        {
+          "value": "Queen",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/QS.svg",
+          "rank": 6,
+          "code": "QS"
+        },
+        {
+          "value": "Ace",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/AD.svg",
+          "rank": 16,
+          "code": "AD"
+        },
+        {
+          "value": "King",
+          "suit": "Clubs",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KC.svg",
+          "rank": 17,
+          "code": "KC"
+        },
+        {
+          "value": "Big Joker",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/BJ.svg",
+          "rank": 1,
+          "code": "BJ"
+        },
+        {
+          "value": "Ace",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/AS.svg",
+          "rank": 4,
+          "code": "AS"
+        },
+        {
+          "value": "Small Joker",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/SJ.svg",
+          "rank": 2,
+          "code": "SJ"
+        },
+        {
+          "value": "King",
+          "suit": "Spades",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/KS.svg",
+          "rank": 5,
+          "code": "KS"
+        },
+        {
+          "value": "5",
+          "suit": "Hearts",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/5H.svg",
+          "rank": 25,
+          "code": "5H"
+        },
+        {
+          "value": "8",
+          "suit": "Diamonds",
+          "image": "https://s3-us-west-2.amazonaws.com/strebor-spades-images/8D.svg",
+          "rank": 22,
+          "code": "8D"
         }
       ],
       "id": 1

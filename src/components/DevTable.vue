@@ -1,4 +1,7 @@
 <template>
+  <!-- This version of DEVTABLE is lacking the following, which I already set up
+  in TABLE: 1) created hook, 2) add timer prop to data function, 3) add beforeDestroy hook
+  4) create and fill refreshStuff method with all populate actions -->
   <div class="dev-table-component">
     <div class="title">Strebor St. Spades</div>
     <p>Trumpet Case Table</p>
