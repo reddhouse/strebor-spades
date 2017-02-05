@@ -58,15 +58,21 @@
     <!-- Bottom Buttons for Round Scoring -->
     <div class="layout-container">
       <div class="first-third">
-        {{ roundScores[0].total }}
-        <button v-on:click="onTake(1)">Take</button>
-        {{ roundScores[0].score }}
+        <div>{{ playerNames[0].name }} - {{ playerNames[2].name }}</div>
+        <div>
+          {{ roundScores[0].total }}
+          <button v-on:click="onTake(1)">Take</button>
+          {{ roundScores[0].score }}
+        </div>
       </div>
       <div class="second-third"></div>
       <div class="third-third">
-        {{ roundScores[1].total }}
-        <button v-on:click="onTake(2)">Take</button>
-        {{ roundScores[1].score }}
+        <div>{{ playerNames[1].name }} - {{ playerNames[3].name }}</div>
+        <div>
+          {{ roundScores[1].total }}
+          <button v-on:click="onTake(2)">Take</button>
+          {{ roundScores[1].score }}
+        </div>
       </div>
     </div>
 
@@ -243,12 +249,12 @@ export default {
 }
 
 .table-container {
+  border: 1px solid lightgrey;
   max-width: 600px;
   margin: auto;
 }
 
 .player1 {
-  border: 1px solid red;
   height: 175px;
 }
 
@@ -258,7 +264,6 @@ export default {
 }
 
 .player2 {
-  border: 1px solid red;
   flex: 2 1 0;
   height: 175px;
 }
@@ -268,14 +273,12 @@ export default {
 }
 
 .player4 {
-  border: 1px solid red;
   flex: 2 1 0;
   height: 175px;
   position: relative;
 }
 
 .player3 {
-  border: 1px solid red;
   height: 175px;
 }
 
