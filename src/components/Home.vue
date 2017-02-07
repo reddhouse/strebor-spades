@@ -32,7 +32,7 @@
       <div class="flex1"></div>
       <div class="flex2">{{ playerNames[0].name }}</div>
       <div class="flex3"><router-link to="/player1">Mobile</router-link></div>
-      <div class="flex4"><router-link to="/player1-solo">Solo</router-link></div>
+      <div class="flex4">&nbsp;<router-link to="/player1-solo">Solo</router-link></div>
       <div class="flex5">
         <input type="text" v-model="localPlayer1" placeholder="Edit Name">
         <button v-on:click="onSetName(1, localPlayer1)">Set</button>
@@ -45,7 +45,7 @@
       <div class="flex1"></div>
       <div class="flex2">{{ playerNames[2].name }}</div>
       <div class="flex3"><router-link to="/player3">Mobile</router-link></div>
-      <div class="flex4"><router-link to="/player3-solo">Solo</router-link></div>
+      <div class="flex4">&nbsp;<router-link to="/player3-solo">Solo</router-link></div>
       <div class="flex5">
         <input type="text" v-model="localPlayer3" placeholder="Edit Name">
         <button v-on:click="onSetName(3, localPlayer3)">Set</button>
@@ -68,7 +68,7 @@
       <div class="flex1"></div>
       <div class="flex2">{{ playerNames[1].name }}</div>
       <div class="flex3"><router-link to="/player2">Mobile</router-link></div>
-      <div class="flex4"><router-link to="/player2-solo">Solo</router-link></div>
+      <div class="flex4">&nbsp;<router-link to="/player2-solo">Solo</router-link></div>
       <div class="flex5">
         <input type="text" v-model="localPlayer2" placeholder="Edit Name">
         <button v-on:click="onSetName(2, localPlayer2)">Set</button>
@@ -81,7 +81,7 @@
       <div class="flex1"></div>
       <div class="flex2">{{ playerNames[3].name }}</div>
       <div class="flex3"><router-link to="/player4">Mobile</router-link></div>
-      <div class="flex4"><router-link to="/player4-solo">Solo</router-link></div>
+      <div class="flex4">&nbsp;<router-link to="/player4-solo">Solo</router-link></div>
       <div class="flex5">
         <input type="text" v-model="localPlayer4" placeholder="Edit Name">
         <button v-on:click="onSetName(4, localPlayer4)">Set</button>
