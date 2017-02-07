@@ -104,37 +104,7 @@
     <button v-on:click="goHome">Home</button>
     <hr>
 
-    <!-- View All Hands, Development Only -->
-    <p>{{ playerNames[0].name }}'s Hand</p>
     <player-one-cards></player-one-cards>
-    <hr>
-
-    <p>{{ playerNames[2].name }}'s Hand</p>
-    <player-three-cards></player-three-cards>
-    <hr>
-
-    <p>{{ playerNames[1].name }}'s Hand</p>
-    <player-two-cards></player-two-cards>
-    <hr>
-
-    <p>{{ playerNames[3].name }}'s Hand</p>
-    <player-four-cards></player-four-cards>
-    <hr>
-
-    <p>Shuffled Deck </p>
-    <div
-      class="card-pics"
-      v-for="(cardObject, index) in shuffled">
-      <single-card v-bind:card="cardObject"></single-card>
-    </div>
-    <hr>
-
-    <p>New Deck</p>
-    <div
-      class="card-pics"
-      v-for="(cardObject, index) in newDeck">
-      <single-card v-bind:card="cardObject"></single-card>
-    </div>
 
   </div>
 </template>
@@ -146,9 +116,6 @@ import SingleCard from './SingleCard.vue'
 import ScoreDisplay from './ScoreDisplay.vue'
 import ScoreInput from './ScoreInput.vue'
 import PlayerOneCards from './Player1.vue'
-import PlayerTwoCards from './Player2.vue'
-import PlayerThreeCards from './Player3.vue'
-import PlayerFourCards from './Player4.vue'
 
 export default {
   name: 'dev-table-component',
@@ -164,13 +131,17 @@ export default {
     // Temp solution until I figure out websockets. Refresh all necessary table
     // components at set intervals
     this.refreshStuff()
-    this.timer = setInterval(this.refreshStuff, 3000)
+    this.timer = setInterval(this.refreshStuff, 30000)
   },
   computed: {
     ...mapGetters([
       'config',
       'newDeck',
       'shuffled',
+      'player1Hand',
+      'player2Hand',
+      'player3Hand',
+      'player4Hand',
       'tableHand',
       'teamScores',
       'playerNames',
@@ -272,10 +243,7 @@ export default {
     SingleCard,
     ScoreDisplay,
     ScoreInput,
-    PlayerOneCards,
-    PlayerTwoCards,
-    PlayerThreeCards,
-    PlayerFourCards
+    PlayerOneCards
   },
   beforeDestroy () {
     clearInterval(this.timer)

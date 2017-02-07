@@ -128,17 +128,13 @@ export default {
     // Temp solution until I figure out websockets. Refresh all necessary table
     // components at set intervals
     this.refreshStuff()
-    this.timer = setInterval(this.refreshStuff, 30000)
+    this.timer = setInterval(this.refreshStuff, 3000)
   },
   computed: {
     ...mapGetters([
       'config',
       'newDeck',
       'shuffled',
-      'player1Hand',
-      'player2Hand',
-      'player3Hand',
-      'player4Hand',
       'tableHand',
       'teamScores',
       'playerNames',
