@@ -176,27 +176,36 @@ export default {
 }
 
 .flex2 {
-  width: 140px;
-  flex: 0 1 auto;
+  width: 100px;
+  flex: 0 2 auto;
 }
 
 .flex3 {
   width: 70px;
-  flex: 0 1 auto;
+  flex: 0 3 auto;
+  padding: 0px 4px;
 }
 
 .flex4 {
   width: 70px;
-  flex: 0 1 auto;
+  flex: 0 3 auto;
+  padding: 0px 4px;
 }
 
 .flex5 {
-  width: 210px;
+  width: 170px;
   flex: 0 1 auto;
 }
 
 .flex6 {
   flex: 1 1 auto;
+}
+
+input {
+  border: 1px solid #4CAF50;
+  width: 80px;
+  padding: 2px 4px;
+  margin: 1px 2px;
 }
 
 button {
@@ -207,7 +216,7 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: .75em;
+  font-size: .7em;
   font-weight: 500;
   margin: 1px 2px;
   -webkit-transition-duration: 0.2s; /* Safari */

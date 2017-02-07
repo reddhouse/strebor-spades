@@ -5,20 +5,20 @@
       <div class="flex1"></div>
 
       <div class="flex2">
-        <input type="text" v-show="!alreadyBid2" v-model="localBid" placeholder="Bid" size="10">
+        <input type="text" v-show="!confirmedBid" v-model="localBid" placeholder="Bid" size="10">
       </div>
 
       <div class="flex3"></div>
 
       <div class="flex4">
-        <input type="text" v-show="alreadyBid2" v-model="localScore" placeholder="Score" size="10">
+        <input type="text" v-show="confirmedBid" v-model="localScore" placeholder="Score" size="10">
       </div>
 
       <div class="flex5"></div>
     </div>
 
-    <button v-if="alreadyBid2"v-on:click="handleScore">Score It!</button>
-    <button v-else-if="alreadyBid1" v-on:click="handleFinalBid">Confirm Bid</button>
+    <button v-if="confirmedBid"v-on:click="handleScore">Score It!</button>
+    <button v-else-if="prelimBid" v-on:click="handleFinalBid">Confirm Bid</button>
     <button v-else v-on:click="handlePrelimBid">Prelim Bid</button>
 
   </div>
@@ -34,40 +34,51 @@ export default {
   data () {
     return {
       localBid: '',
-      localScore: '',
-      alreadyBid1: false,
-      alreadyBid2: false
+      localScore: ''
     }
   },
   computed: {
-    ...mapGetters(['roundScores'])
+    ...mapGetters(['teamScores', 'roundScores']),
+    prelimBid () {
+      // Determines whether the preliminary bid has already been set/logged
+      let scoreList = this.teamScores[this.team - 1].scores
+      let lastScoreObj = scoreList[scoreList.length - 1]
+      return lastScoreObj.prelimbid
+    },
+    confirmedBid () {
+      // Determines whether the "final" bid has been confirmed/logged
+      let scoreList = this.teamScores[this.team - 1].scores
+      let lastScoreObj = scoreList[scoreList.length - 1]
+      return lastScoreObj.confirmedbid
+    }
   },
   methods: {
     ...mapActions(['postPrelimBid', 'postFinalBid', 'postScore', 'putPlayedCard', 'putRoundScore']),
     handlePrelimBid () {
       let payload = {
         'team': this.team,
-        'localBid': this.localBid
+        'localBid': this.localBid,
+        'prelimBid': true
       }
       this.postPrelimBid(payload)
-      this.alreadyBid1 = true
     },
     handleFinalBid () {
       let payload = {
         'team': this.team,
-        'localBid': this.localBid
+        'localBid': this.localBid,
+        'prelimBid': true,
+        'confirmedBid': true
       }
       this.postFinalBid(payload)
-      this.alreadyBid2 = true
     },
     handleScore () {
       let payload = {
         'team': this.team,
-        'localScore': Number(this.localScore)
+        'localScore': Number(this.localScore),
+        'prelimBid': false,
+        'confirmedBid': false
       }
       this.postScore(payload)
-      this.alreadyBid1 = false
-      this.alreadyBid2 = false
       this.localBid = ''
       // Clear all hands on table now that round is over
       setTimeout(() => { this.putPlayedCard({ 'playerID': 1, 'card': {} }) }, 250)

@@ -1,5 +1,7 @@
 <template>
   <div class="score-display-component">
+    <!-- Called in for-loop by Table.vue in order to display bid and score
+    pairs for each "hand" played -->
 
     <div class="flex-container">
       <div class="flex1"></div>
@@ -8,34 +10,16 @@
       <div class="flex4">{{ scoreList.score }}</div>
       <div class="flex5"></div>
     </div>
-    
+
   </div>
 </template>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <script>
 // import { mapGetters, mapActions } from 'vuex'
-// import HelloChild from './HelloChild'
 
 export default {
   name: 'score-display-component',
-  props: ['scoreList'],
-  data () {
-    return {
-
-    }
-  },
-  computed: {
-    // ...mapGetters(['tempBid'])
-  },
-  methods: {
-    // ...mapActions(['setTitle'])
-  },
-  filters: {
-
-  },
-  components: {
-    // HelloChild
-  }
+  props: ['scoreList']
 }
 </script>
 <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->

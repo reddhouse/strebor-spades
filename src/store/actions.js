@@ -4,8 +4,8 @@
 import _ from 'lodash'
 import axios from 'axios'
 
-// const baseURL = 'http://localhost:3000'
-const baseURL = '/api'
+const baseURL = 'http://localhost:3000'
+// const baseURL = '/api'
 
 // Counter Component Actions, left behind for examples  ------------------------
 export const increment = ({ commit }) => commit('increment')
@@ -23,6 +23,14 @@ export const incrementAsync = ({ commit }) => {
 }
 
 // Get Actions -----------------------------------------------------------------
+export const populateConfig = ({ commit }) => {
+  // Hydrate state with new configuration settings from db
+  return axios.get(baseURL + '/config')
+    .then(res => {
+      commit('mutateConfig', res.data)
+    })
+}
+
 export const populateNewDeck = ({ commit }) => {
   // Hydrate state with new deck from db
   return axios.get(baseURL + '/newdeck')
@@ -95,6 +103,14 @@ export const populateRoundScores = ({ commit }) => {
 }
 
 // Put Actions -----------------------------------------------------------------
+export const putConfig = ({ dispatch }, payload) => {
+  // Config is single object that holds app-level state settings
+  return axios.put(baseURL + '/config', payload)
+    .then(res => {
+      dispatch('populateConfig')
+    })
+}
+
 export const putPlayer1Hand = ({ dispatch }, cardSet) => {
   // Called from the Table Component, write player 1's hand to db
   let pkg = { 'cards': cardSet }
@@ -161,10 +177,12 @@ export const putPlayerName = ({ dispatch }, payload) => {
 export const postPrelimBid = ({ dispatch, state }, payload) => {
   let id = payload.team
   let bid = payload.localBid
+  let prelimBid = payload.prelimBid
   let yourTeamScores = _.cloneDeep(state.teamScores[id - 1].scores)
   let newBid = {
     'bid': bid,
-    'score': ''
+    'score': '',
+    'prelimbid': prelimBid
   }
   let pkg = {
     'scores': _.concat(yourTeamScores, newBid)
@@ -178,11 +196,15 @@ export const postPrelimBid = ({ dispatch, state }, payload) => {
 export const postFinalBid = ({ dispatch, state }, payload) => {
   let id = payload.team
   let bid = payload.localBid
+  let prelimBid = payload.prelimBid
+  let confirmedBid = payload.confirmedBid
   let yourTeamScores = _.cloneDeep(state.teamScores[id - 1].scores)
   let slicedScores = yourTeamScores.slice(0, yourTeamScores.length - 1)
   let newBid = {
     'bid': bid,
-    'score': ''
+    'score': '',
+    'prelimbid': prelimBid,
+    'confirmedbid': confirmedBid
   }
   let pkg = {
     'scores': _.concat(slicedScores, newBid)
@@ -194,6 +216,8 @@ export const postFinalBid = ({ dispatch, state }, payload) => {
 }
 
 export const postScore = ({ dispatch, state }, payload) => {
+  let confirmedBid = payload.confirmedBid
+  let prelimBid = payload.prelimBid
   let id = payload.team
   let score = payload.localScore
   let yourTeamScores = _.cloneDeep(state.teamScores[id - 1].scores)
@@ -201,7 +225,9 @@ export const postScore = ({ dispatch, state }, payload) => {
   let slicedScores = yourTeamScores.slice(0, yourTeamScores.length - 1)
   let newScore = {
     'bid': originalBid,
-    'score': score
+    'score': score,
+    'prelimbid': prelimBid,
+    'confirmedbid': confirmedBid
   }
   let pkg = {
     'scores': _.concat(slicedScores, newScore)
@@ -249,7 +275,7 @@ export const modifyPlayer4Hand = ({ dispatch, state }, card) => {
 }
 
 export const resetScores = ({ dispatch }, team) => {
-  let blankScores = { 'scores': [], 'id': team }
+  let blankScores = { 'scores': [{ 'prelimbid': false, 'confirmedbid': false }], 'id': team }
   return axios.put(baseURL + '/teamscores/' + team, blankScores)
     .then(res => {
       dispatch('populateTeamScores')

@@ -7,6 +7,14 @@
       <!-- Team 1 Scoring -->
       <div class="first-third">
         <div class="score-header">Team 1</div>
+        <div class="flex-container">
+          <div class="flex1"></div>
+          <div class="flex2">Bid</div>
+          <div class="flex3"></div>
+          <div class="flex4">Score</div>
+          <div class="flex5"></div>
+        </div>
+
         <div v-for="(allScores, index) in teamScores[0].scores">
           <score-display v-bind:scoreList="allScores"></score-display>
         </div>
@@ -18,26 +26,26 @@
         <div class="table-container">
 
           <div class="player3">
-            <div>{{ playerNames[2].name }}</div>
+            <div v-bind:class="{ dealer: isPlayer3Dealer }">{{ playerNames[2].name }}</div>
             <single-card v-bind:card="tableHand[2].card"></single-card>
           </div>
 
           <div class="sub-container">
             <div class="player2">
-              <div>{{ playerNames[1].name }}</div>
+              <div v-bind:class="{ dealer: isPlayer2Dealer }">{{ playerNames[1].name }}</div>
               <single-card v-bind:card="tableHand[1].card"></single-card>
             </div>
 
             <div class="center-spacer"></div>
 
             <div class="player4">
-              <div>{{ playerNames[3].name }}</div>
+              <div v-bind:class="{ dealer: isPlayer4Dealer }">{{ playerNames[3].name }}</div>
               <single-card v-bind:card="tableHand[3].card"></single-card>
             </div>
           </div>
 
           <div class="player1">
-            <div>{{ playerNames[0].name }}</div>
+            <div v-bind:class="{ dealer: isPlayer1Dealer }">{{ playerNames[0].name }}</div>
             <single-card v-bind:card="tableHand[0].card"></single-card>
           </div>
 
@@ -47,6 +55,14 @@
       <!-- Team 2 Scoring -->
       <div class="third-third">
         <div class="score-header">Team 2</div>
+        <div class="flex-container">
+          <div class="flex1"></div>
+          <div class="flex2">Bid</div>
+          <div class="flex3"></div>
+          <div class="flex4">Score</div>
+          <div class="flex5"></div>
+        </div>
+
         <div v-for="(allScores, index) in teamScores[1].scores">
           <score-display v-bind:scoreList="allScores"></score-display>
         </div>
@@ -58,28 +74,32 @@
     <!-- Bottom Buttons for Round Scoring -->
     <div class="layout-container">
       <div class="first-third">
-        <div>{{ playerNames[0].name }} - {{ playerNames[2].name }}</div>
-        <div>
-          {{ roundScores[0].total }}
-          <button v-on:click="onTake(1)">Take</button>
-          {{ roundScores[0].score }}
+        <div class="score-header">{{ playerNames[0].name }} - {{ playerNames[2].name }}</div>
+        <div class="flex-container">
+          <div class="flex1"></div>
+          <div class="flex2">Total: {{ roundScores[0].total }}</div>
+          <div class="flex3"><button v-on:click="onTake(1)">Take</button></div>
+          <div class="flex4">Books: {{ roundScores[0].score }}</div>
+          <div class="flex5"></div>
         </div>
       </div>
       <div class="second-third"></div>
       <div class="third-third">
-        <div>{{ playerNames[1].name }} - {{ playerNames[3].name }}</div>
-        <div>
-          {{ roundScores[1].total }}
-          <button v-on:click="onTake(2)">Take</button>
-          {{ roundScores[1].score }}
+        <div class="score-header">{{ playerNames[1].name }} - {{ playerNames[3].name }}</div>
+        <div class="flex-container">
+          <div class="flex1"></div>
+          <div class="flex2">Total: {{ roundScores[1].total }}</div>
+          <div class="flex3"><button v-on:click="onTake(2)">Take</button></div>
+          <div class="flex4">Books: {{ roundScores[1].score }}</div>
+          <div class="flex5"></div>
         </div>
       </div>
     </div>
 
     <!-- Navigation  -->
+    <button v-on:click="onSwitchDealer">Dealer</button>
     <button v-on:click="onDeal">Deal</button>
     <button>Undo</button>
-    <button>Tally</button>
     <button v-on:click="onReset">Reset</button>
     <button v-on:click="goHome">Home</button>
     <hr>
@@ -107,13 +127,12 @@ export default {
   created () {
     // Temp solution until I figure out websockets. Refresh all necessary table
     // components at set intervals
-    this.populateTeamScores()
-    this.populateRoundScores()
     this.refreshStuff()
-    this.timer = setInterval(this.refreshStuff, 3000)
+    this.timer = setInterval(this.refreshStuff, 30000)
   },
   computed: {
     ...mapGetters([
+      'config',
       'newDeck',
       'shuffled',
       'player1Hand',
@@ -124,10 +143,23 @@ export default {
       'teamScores',
       'playerNames',
       'roundScores'
-    ])
+    ]),
+    isPlayer1Dealer () {
+      return this.config.dealer === 1
+    },
+    isPlayer2Dealer () {
+      return this.config.dealer === 2
+    },
+    isPlayer3Dealer () {
+      return this.config.dealer === 3
+    },
+    isPlayer4Dealer () {
+      return this.config.dealer === 4
+    }
   },
   methods: {
     ...mapActions([
+      'putConfig',
       'putShuffledDeck',
       'putPlayer1Hand',
       'putPlayer2Hand',
@@ -143,6 +175,12 @@ export default {
     goHome () {
       // Demo of programitic navigation
       this.$router.push('/')
+    },
+    onSwitchDealer () {
+      // Rotate dealer to next player
+      let nextDealer = this.config.dealer
+      nextDealer === 4 ? nextDealer = 1 : nextDealer++
+      this.putConfig({'dealer': nextDealer})
     },
     onDeal () {
       this.putShuffledDeck()
@@ -184,6 +222,8 @@ export default {
     refreshStuff () {
       console.log('Ping')
       this.populateTableHand()
+      this.populateTeamScores()
+      this.populateRoundScores()
     }
   },
   watch: {
@@ -230,6 +270,11 @@ export default {
 
 .card-pics {
   display: inline-block;
+}
+
+.dealer {
+  font-weight: 600;
+  color: red;
 }
 
 .layout-container {
@@ -280,6 +325,31 @@ export default {
 
 .player3 {
   height: 175px;
+}
+
+/* Styling for score column headings */
+.flex-container {
+  display: flex;
+}
+
+.flex1 {
+  flex: 2 1 auto;
+}
+
+.flex2 {
+  flex: 1 1 0;
+}
+
+.flex3 {
+  flex: 1 1 auto;
+}
+
+.flex4 {
+  flex: 1 1 0;
+}
+
+.flex5 {
+  flex: 2 1 auto;
 }
 
 button {

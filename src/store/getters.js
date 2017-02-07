@@ -16,6 +16,7 @@ export const recentHistory = state => {
 }
 
 // Strebor Spades Getters ------------------------------------------------------
+export const config = state => state.config
 export const newDeck = state => state.newDeck
 export const shuffled = state => state.shuffled
 export const player1Hand = state => state.player1Hand

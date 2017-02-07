@@ -16,6 +16,10 @@ export const decrement = state => {
 }
 
 // Table Component Mutations ---------------------------------------------------
+export const mutateConfig = (state, serverSettings) => {
+  state.config = serverSettings
+}
+
 export const mutateNewDeck = (state, serverDeck) => {
   state.newDeck = serverDeck
 }
