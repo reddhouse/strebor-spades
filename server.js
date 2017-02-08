@@ -11,7 +11,8 @@ console.log('server started '+ port);
 
 // WS experiment
 const socketIO = require('socket.io');
-const io = socketIO(app);
+var http = require('http').Server(app);
+const io = socketIO(http);
 
 io.on('connection', (socket) => {
   console.log('Client connected');
