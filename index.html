@@ -6,6 +6,17 @@
     <meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body>
+    <!-- WS experiment -->
+    <p id='server-time'></p>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      var el = document.getElementById('server-time');
+      socket.on('time', function(timeString) {
+        el.innerHTML = 'Server time: ' + timeString;
+      });
+    </script>
+    <!-- END WS experiment -->
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
