@@ -201,6 +201,10 @@ export default {
   flex: 1 1 auto;
 }
 
+a {
+  color: #42b983;
+}
+
 input {
   border: 1px solid #4CAF50;
   width: 80px;

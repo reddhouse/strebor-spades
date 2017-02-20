@@ -1,5 +1,8 @@
 <template>
   <div class="dev-table-component">
+    <!-- The dev table, AKA observer table is the same as the other tables,
+    except the user is able to view all four player's hands at one time -->
+
     <div class="title">Strebor St. Spades</div>
     <p>Trumpet Case Table</p>
     <div class="layout-container">
@@ -200,7 +203,12 @@ export default {
       'resetScores',
       'putPlayedCard',
       'putRoundScore',
+      'populateConfig',
       'populateTableHand',
+      'populatePlayer1Hand',
+      'populatePlayer2Hand',
+      'populatePlayer3Hand',
+      'populatePlayer4Hand',
       'populateTeamScores',
       'populateRoundScores'
     ]),
@@ -252,10 +260,15 @@ export default {
       setTimeout(() => { this.putRoundScore(payload) }, 1250)
     },
     refreshStuff () {
-      console.log('Ping')
+      //console.log('Ping')
       this.populateTableHand()
+      this.populatePlayer1Hand()
+      this.populatePlayer2Hand()
+      this.populatePlayer3Hand()
+      this.populatePlayer4Hand()
       this.populateTeamScores()
       this.populateRoundScores()
+      this.populateConfig()
     }
   },
   watch: {

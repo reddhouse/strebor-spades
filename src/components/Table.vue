@@ -1,5 +1,8 @@
 <template>
   <div class="dev-table-component">
+    <!-- The "card table" is commonly viewed by all players during game-play,
+    and hence, this component is the hub of many game-play related actions  -->
+
     <div class="title">Strebor St. Spades</div>
     <p>Trumpet Case Table</p>
     <div class="layout-container">
@@ -164,6 +167,7 @@ export default {
       'resetScores',
       'putPlayedCard',
       'putRoundScore',
+      'populateConfig',
       'populateTableHand',
       'populateTeamScores',
       'populateRoundScores'
@@ -179,6 +183,7 @@ export default {
       this.putConfig({'dealer': nextDealer})
     },
     onDeal () {
+      // Dispatch action to shuffle deck and update state.shuffled.
       this.putShuffledDeck()
     },
     onReset () {
@@ -216,15 +221,16 @@ export default {
       setTimeout(() => { this.putRoundScore(payload) }, 1250)
     },
     refreshStuff () {
-      console.log('Ping')
+      // console.log('Ping')
       this.populateTableHand()
       this.populateTeamScores()
       this.populateRoundScores()
+      this.populateConfig()
     }
   },
   watch: {
     shuffled: function () {
-      // Deal 13 cards to each player, call actions to write to db
+      // Deal 13 cards to each player, dispatch actions to write to db
       let splitDeck = _.chunk(this.shuffled, 13)
       this.putPlayer1Hand(splitDeck[0])
       setTimeout(() => { this.putPlayer2Hand(splitDeck[1]) }, 250)
